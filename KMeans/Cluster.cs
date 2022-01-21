@@ -10,16 +10,16 @@ namespace KMeans
     {
 
         static List<int> s_OccupuedPositions = new List<int>();
-        public IDataPoint Centroid { get; set; }
-        public List<IDataPoint> Points { get; set; }
+        public DataVec Centroid { get; set; }
+        public List<DataVec> Points { get; set; }
 
-        private IDataPoint m_LastCentroid;
+        private DataVec m_LastCentroid;
 
 
         public Cluster(int dimensions)
         {
-            Centroid = new IDataPoint(dimensions);
-            Points = new List<IDataPoint>();
+            Centroid = new DataVec(dimensions);
+            Points = new List<DataVec>();
         }
 
         public void ClearData()
@@ -27,7 +27,7 @@ namespace KMeans
             Points.Clear();
         }
 
-        public void RandomCentroidPlacement(IDataPoint [] data)
+        public void RandomCentroidPlacement(DataVec [] data)
         {
             int index = 0;
             int cnt = 0;
@@ -44,9 +44,9 @@ namespace KMeans
 
             } while (s_OccupuedPositions.Contains(index));
 
-            Centroid = IDataPoint.DeepCopy(data[index]);
+            Centroid = DataVec.DeepCopy(data[index]);
             s_OccupuedPositions.Add(index);
-            m_LastCentroid = IDataPoint.DeepCopy(Centroid);
+            m_LastCentroid = DataVec.DeepCopy(Centroid);
 
         }
 
@@ -71,8 +71,8 @@ namespace KMeans
                 mean[i] /= Points.Count;
 
             }
-            m_LastCentroid = IDataPoint.DeepCopy(Centroid);
-            Centroid = new IDataPoint(mean);
+            m_LastCentroid = DataVec.DeepCopy(Centroid);
+            Centroid = new DataVec(mean);
             return Centroid.GetDistance(m_LastCentroid);
         }
 

@@ -9,11 +9,11 @@ namespace KMeans
     class Program
     {
 
-        static List<IDataPoint> ReadTestData()
+        static List<DataVec> ReadTestData()
         {
             string path = "dataset1.csv";
 
-            List<IDataPoint> pts = new List<IDataPoint>();
+            List<DataVec> pts = new List<DataVec>();
             using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
             {
                 int index = 0;
@@ -27,7 +27,7 @@ namespace KMeans
                     el[1] = el[1].Trim();
                     double x = double.Parse(el[0]);
                     double y = double.Parse(el[1]);
-                    pts.Add(new IDataPoint(new double[] { x, y }));
+                    pts.Add(new DataVec(new double[] { x, y }));
                 }
             }
             return pts;
@@ -35,7 +35,7 @@ namespace KMeans
         static void Main(string[] args)
         {
             
-            List<IDataPoint> points = ReadTestData();
+            List<DataVec> points = ReadTestData();
                 // new List<IDataPoint>();
             //Random rnd = new Random();
             //for (int i = 0; i < 50; ++i)

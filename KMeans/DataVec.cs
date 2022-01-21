@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace KMeans
 {
-    public class IDataPoint
+    public class DataVec
     {
 
         public double [] Elements { get; private set; }
 
 
-        static public IDataPoint DeepCopy(IDataPoint source)
+        static public DataVec DeepCopy(DataVec source)
         {
             double[] data = new double[source.Elements.Length];
             Array.Copy(source.Elements, data, source.Elements.Length);
-            IDataPoint ret = new IDataPoint(data);
+            DataVec ret = new DataVec(data);
             return ret;
         }
 
-        public IDataPoint(double [] data)
+        public DataVec(double [] data)
         {
             Elements = data;
         }
 
-        public IDataPoint(int dimensions)
+        public DataVec(int dimensions)
         {
             Elements = new double[dimensions];
         }
@@ -42,7 +42,7 @@ namespace KMeans
         }
         
 
-        public double GetDistance(IDataPoint other)
+        public double GetDistance(DataVec other)
         {
             if(other.Elements.Length != Elements.Length)
             {

@@ -13,10 +13,10 @@ namespace KMeans
 
         private readonly int MAX_ITERATIONS = 100;
         private int m_K;
-        private IDataPoint [] p_DataPoints;
+        private DataVec [] p_DataPoints;
         private Cluster[] m_Clusters;
 
-        private KMSState CheckData(IDataPoint[] points, int k)
+        private KMSState CheckData(DataVec[] points, int k)
         {
             if (points == null) return KMSState.PointsArrayNull;
             if (points.Length < 1) return KMSState.DataPointsArayEmpty;
@@ -34,7 +34,7 @@ namespace KMeans
 
        
 
-        public KMeansClustering(IDataPoint[] points, int k)
+        public KMeansClustering(DataVec[] points, int k)
         {
 
             KMSState state = CheckData(points, k);

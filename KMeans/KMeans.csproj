@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cluster.cs" />
-    <Compile Include="IDataPoint.cs" />
+    <Compile Include="DataVec.cs" />
     <Compile Include="KMClusterer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
