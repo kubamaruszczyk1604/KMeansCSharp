@@ -30,9 +30,31 @@ namespace KMeans
             Data = new double[dimensions];
         }
 
+        private double EuclidianMagnitude(double[] data)
+        {
+            double sumSquared = 0;
+
+            for(int i = 0; i < data.Length; ++i)
+            {
+                sumSquared += (data[i] * data[i]);
+            }
+            return Math.Sqrt(sumSquared);
+        }
+        
+
         public double GetDistance(IDataPoint other)
         {
-            return 0;
+            if(other.Data.Length != Data.Length)
+            {
+                throw new Exception("Dimension mismatch");
+            }
+            double[] diff = new double[Data.Length];
+            for(int i = 0; i < diff.Length; ++i)
+            {
+                diff[i] = other.Data[i] - Data[i];
+            }
+
+            return EuclidianMagnitude(diff);
         }
 
         public void Print()
