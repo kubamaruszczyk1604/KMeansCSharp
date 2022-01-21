@@ -100,7 +100,9 @@ namespace KMeans
                 {
                     distChanged += m_Clusters[iCluster].RecalculateCentroid();
                 }
-                if (distChanged < 0.1f) break;
+                Console.WriteLine(distChanged);
+                if (distChanged < 0.01)
+                    break;
             }
             return m_Clusters;
         }

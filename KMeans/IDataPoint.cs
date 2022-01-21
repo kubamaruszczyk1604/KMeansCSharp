@@ -59,13 +59,18 @@ namespace KMeans
 
         public void Print()
         {
-            string str = "E: ";
+            Console.WriteLine("E: " + this.ToString());
+        }
 
-            for(int i = 0; i < Elements.Length; ++i)
+        public override string ToString()
+        {
+            string str = "";
+
+            for (int i = 0; i < Elements.Length; ++i)
             {
-                str += Elements[i].ToString() + ", ";
+                str += Elements[i].ToString() + ",";
             }
-            Console.WriteLine(str);
+            return str.Substring(0,str.Length-1);
         }
     }
 

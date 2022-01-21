@@ -46,9 +46,10 @@ namespace KMeans
 
             Centroid = IDataPoint.DeepCopy(data[index]);
             s_OccupuedPositions.Add(index);
-            m_LastCentroid = Centroid;
-            
+            m_LastCentroid = IDataPoint.DeepCopy(Centroid);
+
         }
+
         /// <summary>
         /// retrun dist updated
         /// </summary>
@@ -70,8 +71,24 @@ namespace KMeans
                 mean[i] /= Points.Count;
 
             }
+            m_LastCentroid = IDataPoint.DeepCopy(Centroid);
             Centroid = new IDataPoint(mean);
             return Centroid.GetDistance(m_LastCentroid);
         }
+
+
+        public void SaveAsCSV(string path)
+        {
+            using (System.IO.StreamWriter writer = new System.IO.StreamWriter(path))
+            {
+                foreach(var point in Points)
+                {
+                    writer.WriteLine(point.ToString());
+                }
+
+                writer.Close();
+            }
+        }
+
     }
 }

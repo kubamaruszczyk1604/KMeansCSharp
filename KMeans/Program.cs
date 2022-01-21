@@ -13,9 +13,10 @@ namespace KMeans
 
             List<IDataPoint> points = new List<IDataPoint>();
             Random rnd = new Random();
-            for (int i = 0; i < 20; ++i)
+            for (int i = 0; i < 50; ++i)
             {
-                points.Add(new IDataPoint(new double[] { rnd.NextDouble() * rnd.Next(0, 20), rnd.NextDouble() * rnd.Next(0, 20) }));
+                //points.Add(new IDataPoint(new double[] { rnd.NextDouble() * rnd.Next(0, 20), rnd.NextDouble() * rnd.Next(0, 20) }));
+                points.Add(new IDataPoint(new double[] { i,  i }));
             }
 
             //foreach (var point in points)
@@ -29,6 +30,7 @@ namespace KMeans
             Cluster[] clusters =  cl.Calculate();
             Console.WriteLine(clusters.Length);
             cl.PrintCentroids();
+            clusters[2].SaveAsCSV("C:/users/kuba/desktop/cluster0.csv");
             Console.ReadLine();
         }
     }
