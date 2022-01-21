@@ -9,25 +9,25 @@ namespace KMeans
     public class IDataPoint
     {
 
-        public double [] Data { get; private set; }
+        public double [] Elements { get; private set; }
 
 
         static public IDataPoint DeepCopy(IDataPoint source)
         {
-            double[] data = new double[source.Data.Length];
-            Array.Copy(source.Data, data, source.Data.Length);
+            double[] data = new double[source.Elements.Length];
+            Array.Copy(source.Elements, data, source.Elements.Length);
             IDataPoint ret = new IDataPoint(data);
             return ret;
         }
 
         public IDataPoint(double [] data)
         {
-            Data = data;
+            Elements = data;
         }
 
         public IDataPoint(int dimensions)
         {
-            Data = new double[dimensions];
+            Elements = new double[dimensions];
         }
 
         private double EuclidianMagnitude(double[] data)
@@ -44,14 +44,14 @@ namespace KMeans
 
         public double GetDistance(IDataPoint other)
         {
-            if(other.Data.Length != Data.Length)
+            if(other.Elements.Length != Elements.Length)
             {
                 throw new Exception("Dimension mismatch");
             }
-            double[] diff = new double[Data.Length];
+            double[] diff = new double[Elements.Length];
             for(int i = 0; i < diff.Length; ++i)
             {
-                diff[i] = other.Data[i] - Data[i];
+                diff[i] = other.Elements[i] - Elements[i];
             }
 
             return EuclidianMagnitude(diff);
@@ -61,9 +61,9 @@ namespace KMeans
         {
             string str = "E: ";
 
-            for(int i = 0; i < Data.Length; ++i)
+            for(int i = 0; i < Elements.Length; ++i)
             {
-                str += Data[i].ToString() + ", ";
+                str += Elements[i].ToString() + ", ";
             }
             Console.WriteLine(str);
         }

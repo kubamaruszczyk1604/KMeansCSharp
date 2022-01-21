@@ -10,8 +10,8 @@ namespace KMeans
                            NullEntryInDataPoints = 4,  DimensionMismatch = 5 }
     public class KMeansClustering
     {
-        
 
+        private readonly int MAX_ITERATIONS = 100;
         private int m_K;
         private IDataPoint [] p_DataPoints;
         private Cluster[] m_Clusters;
@@ -22,11 +22,11 @@ namespace KMeans
             if (points.Length < 1) return KMSState.DataPointsArayEmpty;
             if (points.Length < k) return KMSState.MoreCategoriesThanPoints;
             if (points[0] == null) return KMSState.NullEntryInDataPoints;
-            int dimensions = points[0].Data.Length;
+            int dimensions = points[0].Elements.Length;
             for(int i = 1; i< points.Length;++i)
             {
                 if (points[i] == null) return KMSState.NullEntryInDataPoints;
-                if (points[i].Data.Length != dimensions) return KMSState.DimensionMismatch;
+                if (points[i].Elements.Length != dimensions) return KMSState.DimensionMismatch;
             }
 
             return KMSState.OK;
@@ -46,7 +46,7 @@ namespace KMeans
             m_K = k;
             p_DataPoints = points;
             m_Clusters = new Cluster[m_K];
-            int dimensions = points[0].Data.Length;
+            int dimensions = points[0].Elements.Length;
             for(int i = 0; i < m_K; ++i)
             {
                 m_Clusters[i] = new Cluster(dimensions);
@@ -62,18 +62,47 @@ namespace KMeans
             for(int i = 0; i < m_Clusters.Length; ++i)
             {
                 m_Clusters[i].Centroid.Print();
+                Console.WriteLine("CNT: " + m_Clusters[i].Points.Count.ToString());
             }
         }
 
-        public void Calculate()
+        public Cluster[] Calculate()
         {
-            while(true)
+            int iterations = 0;
+            while(iterations < MAX_ITERATIONS)
             {
-                for(int iPoint = 0; iPoint < p_DataPoints.Length; ++iPoint )
+                iterations++;
+                //clear points in clusters
+                for (int iCluster = 0; iCluster < m_Clusters.Length; ++iCluster)
                 {
+                    m_Clusters[iCluster].ClearData();
+                }
+                //reasing points in clusters
+                for(int iPoint = 0; iPoint < p_DataPoints.Length; ++iPoint)
+                {
+                    double dist = double.PositiveInfinity;
+                    int cluster = 0;
+                    for(int iCluster = 0; iCluster < m_Clusters.Length; ++ iCluster)
+                    {
+                        double d = m_Clusters[iCluster].Centroid.GetDistance(p_DataPoints[iPoint]);
+                        if(d<dist)
+                        {
+                            dist = d;
+                            cluster = iCluster;
+                        }
+                    }
+                    m_Clusters[cluster].Points.Add(p_DataPoints[iPoint]);
 
                 }
+                // recalculate centriods
+                double distChanged = 0;
+                for (int iCluster = 0; iCluster < m_Clusters.Length; ++iCluster)
+                {
+                    distChanged += m_Clusters[iCluster].RecalculateCentroid();
+                }
+                if (distChanged < 0.1f) break;
             }
+            return m_Clusters;
         }
 
 

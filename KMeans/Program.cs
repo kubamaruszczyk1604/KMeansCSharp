@@ -18,16 +18,17 @@ namespace KMeans
                 points.Add(new IDataPoint(new double[] { rnd.NextDouble() * rnd.Next(0, 20), rnd.NextDouble() * rnd.Next(0, 20) }));
             }
 
-            foreach (var point in points)
-            {
-                point.Print();
-            }
-            Console.WriteLine();
+            //foreach (var point in points)
+            //{
+            //    point.Print();
+            //}
+            //Console.WriteLine();
 
             KMeansClustering cl = new KMeansClustering(points.ToArray(), 5);
             cl.PrintCentroids();
-
-
+            Cluster[] clusters =  cl.Calculate();
+            Console.WriteLine(clusters.Length);
+            cl.PrintCentroids();
             Console.ReadLine();
         }
     }

@@ -11,17 +11,20 @@ namespace KMeans
 
         static List<int> s_OccupuedPositions = new List<int>();
         public IDataPoint Centroid { get; set; }
-        public List<IDataPoint> Data { get; set; }
+        public List<IDataPoint> Points { get; set; }
+
+        private IDataPoint m_LastCentroid;
 
 
         public Cluster(int dimensions)
         {
             Centroid = new IDataPoint(dimensions);
+            Points = new List<IDataPoint>();
         }
 
         public void ClearData()
         {
-            Data.Clear();
+            Points.Clear();
         }
 
         public void RandomCentroidPlacement(IDataPoint [] data)
@@ -43,17 +46,32 @@ namespace KMeans
 
             Centroid = IDataPoint.DeepCopy(data[index]);
             s_OccupuedPositions.Add(index);
+            m_LastCentroid = Centroid;
             
         }
-
-        public void RecalculateCentroid()
+        /// <summary>
+        /// retrun dist updated
+        /// </summary>
+        /// <returns></returns>
+        public double RecalculateCentroid()
         {
             
-            for(int i = 0; i < Data.Count; ++i)
+            if(Points.Count == 0)
             {
-                
+                return 0;
             }
-            
+            double[] mean = new double[Centroid.Elements.Length];
+            for(int i = 0; i < mean.Length; ++i)
+            {
+                for(int pI = 0; pI < Points.Count; ++pI)
+                {
+                    mean[i] += Points[pI].Elements[i];
+                }
+                mean[i] /= Points.Count;
+
+            }
+            Centroid = new IDataPoint(mean);
+            return Centroid.GetDistance(m_LastCentroid);
         }
     }
 }
