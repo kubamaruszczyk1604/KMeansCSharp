@@ -51,5 +51,13 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="dataset1_reference.txt" />
+    <Content Include="TestData\centroids.txt" />
+    <None Include="TestData\dataset1.csv" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>copy $(ProjectDir)TestData/dataset1.csv $(TargetDir)dataset1.csv</PreBuildEvent>
+  </PropertyGroup>
 </Project>

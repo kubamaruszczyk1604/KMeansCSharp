@@ -11,7 +11,7 @@ namespace KMeans
 
         static List<IDataPoint> ReadTestData()
         {
-            string path = "c:/users/kuba/desktop/data_test.txt";
+            string path = "dataset1.csv";
 
             List<IDataPoint> pts = new List<IDataPoint>();
             using (System.IO.StreamReader reader = new System.IO.StreamReader(path))
@@ -22,6 +22,7 @@ namespace KMeans
                     index++;
                     string rd = reader.ReadLine();
                     string[] el = rd.Split(',');
+                    if (el.Length != 2) continue;
                     el[0] = el[0].Trim();
                     el[1] = el[1].Trim();
                     double x = double.Parse(el[0]);
@@ -33,7 +34,7 @@ namespace KMeans
         }
         static void Main(string[] args)
         {
-            ReadTestData();
+            
             List<IDataPoint> points = ReadTestData();
                 // new List<IDataPoint>();
             //Random rnd = new Random();
