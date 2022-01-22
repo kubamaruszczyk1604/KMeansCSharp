@@ -7,7 +7,7 @@ I also use it for extracting palettes from images, with satisfying results.
 However, I cannot guarantee it is 100% bug free.
 If you find any part of it useful, feel free to use it however you like.
 
-
+## Description
 
 Algorithm operates on set of n-dimensional vectors (data points). 
 These vectors are represented here by DataVec class, which, in its simplest form contains:
@@ -18,7 +18,7 @@ These vectors are represented here by DataVec class, which, in its simplest form
 By default, Euclidian distance is used, but classes that inherit form DataVec can override
 GetDistance() method and provide their own distance function.
 
-Example usage:
+## Example usage:
 
     //Data points
   
