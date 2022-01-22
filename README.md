@@ -1,4 +1,6 @@
 # C# implementation of k-means-clustering algorithm.
+The goal was to create implementation that is simple but also flexible (i.e. allows for use of custom data structures and distance functions).
+To keep things simple and easy to port to other languages, no C#-specific features, nor libaries (such as Linq) were used.
 
 ## Description
 
