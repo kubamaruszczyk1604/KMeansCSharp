@@ -1,6 +1,6 @@
 # C# implementation of k-means-clustering algorithm.
-The goal was to create implementation that is simple but also flexible (i.e. allows for use of custom data structures and distance calculations).
-To keep things simple and easy to port to other languages, no C#-specific features, nor libaries (such as Linq) were used: except for Collections.Generic.List, which could be easily replaced in other languages with any resizable array type, e.g. std::vector in C++)
+The goal was to create implementation that is portable and simple, but also flexible (i.e. allows for use of custom data structures and distance calculations).
+To keep things simple and easy to port to other languages, no C#-specific features, nor libaries (such as Linq) were used: except for Collections.Generic.List, which could be easily replaced with any resizable container type, e.g. std::vector in C++)
 
 ## Description
 
