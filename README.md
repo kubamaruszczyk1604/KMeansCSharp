@@ -11,7 +11,7 @@ These vectors are represented by DataVec class, which, in its simplest form cont
   - Method for calculating distance between data points: GetDistance(DataVec other). 
 
 By default, euclidean distance is used, but since algorithm only cares about the distance function (and not about the underlying data structure), 
-classes that are derived form DataVec can provide their own implemantations of distance function via overriding default GetDistance() method.
+classes that are derived form DataVec can provide their own implemantations of distance function via override of default GetDistance() method.
 
 ### Example usage:
 
