@@ -3,7 +3,7 @@ A C# implementation of k-means-clustering algorithm.
 
 Disclaimer:
 This software was tested with few datasets and gives results that are close to ground truth.
-I also use it for extracting pallettes from images and colour downsampling, with satisfying results.
+I also use it for extracting palettes from images, with satisfying results.
 However, I cannot guarantee it is 100% bug free.
 If you find any part of it useful, feel free to use it however you like.
 
