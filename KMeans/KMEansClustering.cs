@@ -19,7 +19,6 @@ namespace KMeans
 
         public KMeansClustering(DataVec[] points, int k)
         {
-
             KMSState state = CheckData(points, k);
             if(state != KMSState.OK)
             {
