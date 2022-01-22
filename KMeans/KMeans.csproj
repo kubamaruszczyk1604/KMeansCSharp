@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Cluster.cs" />
     <Compile Include="DataVec.cs" />
-    <Compile Include="KMClusterer.cs" />
+    <Compile Include="KMeansClustering.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,7 +52,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dataset1_reference.txt" />
+    <Content Include="dataset1_ground_truth.txt" />
     <Content Include="TestData\centroids.txt" />
     <None Include="TestData\dataset1.csv" />
   </ItemGroup>

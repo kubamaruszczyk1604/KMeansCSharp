@@ -9,6 +9,24 @@ namespace KMeans
     class Program
     {
 
+
+        static void Main(string[] args)
+        {
+            
+            List<DataVec> points = ReadTestData();
+
+            KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
+            Cluster[] clusters =  cl.Calculate();
+
+            Console.WriteLine("\n");
+            Console.WriteLine("Number of clusters k = " + clusters.Length);
+            cl.PrintCentroids();
+
+            Console.ReadLine();
+        }
+
+
+        
         static List<DataVec> ReadTestData()
         {
             string path = "dataset1.csv";
@@ -31,18 +49,6 @@ namespace KMeans
                 }
             }
             return pts;
-        }
-        static void Main(string[] args)
-        {
-            
-            List<DataVec> points = ReadTestData();
-
-            KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
-            Cluster[] clusters =  cl.Calculate();
-            Console.WriteLine("\n");
-            Console.WriteLine("Number of clusters k = " + clusters.Length);
-            cl.PrintCentroids();
-            Console.ReadLine();
         }
     }
 }

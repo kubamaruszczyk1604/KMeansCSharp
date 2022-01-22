@@ -1,33 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KMeans
 {
     public class Cluster
     {
 
-        static List<int> s_OccupuedPositions = new List<int>();
-        public DataVec Centroid { get; set; }
-        public List<DataVec> Points { get; set; }
+        static List<int> s_OccupuedCentroidPositions = new List<int>(); // This is to keep track of which centroid positions are 
+                                                                        // already occupied during random placement
 
+        /// <summary>
+        /// Clear chaced centroid indices
+        /// </summary>
+        public static void ResetCache()
+        {
+            s_OccupuedCentroidPositions.Clear();
+        }
         private DataVec m_LastCentroid;
 
+        /// <summary>
+        /// Centre point of a cluster
+        /// </summary>
+        public DataVec Centroid { get; set; }
+        /// <summary>
+        /// Members of this cluster
+        /// </summary>
+        public List<DataVec> Points { get; set; }
 
-        public Cluster(int dimensions)
+
+        public Cluster()
         {
-            Centroid = new DataVec(dimensions);
+            const int defaultN = 2;
+            Centroid = new DataVec(defaultN);
             Points = new List<DataVec>();
         }
 
+        /// <summary>
+        /// Clears references to datapoints used for centroid recalculation
+        /// </summary>
         public void ClearData()
         {
             Points.Clear();
         }
 
-        public void RandomCentroidPlacement(DataVec [] data)
+        /// <summary>
+        /// Places centrid at the position of a point randomly selected from the data.  
+        /// </summary>
+        /// <param name="allData"></param>
+        public void Initialize(DataVec [] allData)
         {
             int index = 0;
             int cnt = 0;
@@ -40,18 +60,18 @@ namespace KMeans
                     throw new Exception("Cannot do centroid placement.");
                 }
 
-                index = rnd.Next(data.Length);
+                index = rnd.Next(allData.Length);
 
-            } while (s_OccupuedPositions.Contains(index));
+            } while (s_OccupuedCentroidPositions.Contains(index));
 
-            Centroid = DataVec.DeepCopy(data[index]);
-            s_OccupuedPositions.Add(index);
+            Centroid = DataVec.DeepCopy(allData[index]);
+            s_OccupuedCentroidPositions.Add(index);
             m_LastCentroid = DataVec.DeepCopy(Centroid);
 
         }
 
         /// <summary>
-        /// retrun dist updated
+        /// Updates centroid position in respect to cluster data data points
         /// </summary>
         /// <returns></returns>
         public double RecalculateCentroid()
@@ -76,7 +96,10 @@ namespace KMeans
             return Centroid.GetDistance(m_LastCentroid);
         }
 
-
+        /// <summary>
+        /// Dave results as CSV file
+        /// </summary>
+        /// <param name="path"></param>
         public void SaveAsCSV(string path)
         {
             using (System.IO.StreamWriter writer = new System.IO.StreamWriter(path))
