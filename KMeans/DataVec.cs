@@ -2,6 +2,13 @@
 
 namespace KMeans
 {
+    /// <summary>
+    /// A data vector class with some distance calculation and helper methods.
+    /// 
+    /// If you need to use different/custom data structure or distance calculation, it should be fairly easy. 
+    /// Since algorithm only cares about the distance function and not about the underlying data structure, 
+    /// your custom class can just inherit from DataVec and provide new implementation of GetDistance() method via override.
+    /// </summary>
     public class DataVec
     {
 
@@ -38,7 +45,7 @@ namespace KMeans
         }
         
 
-        public double GetDistance(DataVec other)
+        public virtual double GetDistance(DataVec other)
         {
             if(other.Elements.Length != Elements.Length)
             {

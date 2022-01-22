@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace KMeans
 {
+    /// <summary>
+    /// This class represents data point cluster. 
+    /// It contains centroid and a list of references to member data points.
+    /// </summary>
     public class Cluster
     {
 
