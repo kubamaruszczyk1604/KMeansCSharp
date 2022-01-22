@@ -52,8 +52,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dataset1_ground_truth.txt" />
-    <Content Include="TestData\centroids.txt" />
+    <Content Include="TestData\groud_truth.txt" />
     <None Include="TestData\dataset1.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
