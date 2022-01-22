@@ -22,7 +22,7 @@ classes that are derived form DataVec can provide their own implemantations of d
     KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
   
     // Perform clasification and return results
-    Cluster[] clusters =  cl.Calculate();
+    Cluster[] clusters =  cl.Compute();
   
 
 Each returned Cluster object will contain:
