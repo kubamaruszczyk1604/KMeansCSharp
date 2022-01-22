@@ -26,7 +26,7 @@ classes that are derived form DataVec can provide their own implemantations of d
 Each returned Cluster object will contain:
   
   - Centroid Point (mean of all points in this cluster)
-  - List of all points that are members of this cluster.
+  - List of all points that were assigned this cluster.
 
 ## Disclaimer
 This software was tested with few datasets and gives results that are close to ground truth.
