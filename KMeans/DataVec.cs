@@ -59,7 +59,7 @@ namespace KMeans
                 diff[i] = other.Components[i] - Components[i];
             }
 
-            return EuclidianMagnitude(diff);
+            return CalculateMagintude(diff);
         }
         /// <summary>
         /// Print data point. For Debug.
@@ -101,7 +101,7 @@ namespace KMeans
         }
 
 
-        protected double EuclidianMagnitude(double[] data)
+        protected double CalculateMagintude(double[] data)
         {
             double sumSquared = 0;
 
