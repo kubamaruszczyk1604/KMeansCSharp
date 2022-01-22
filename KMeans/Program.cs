@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KMeans
 {
@@ -16,11 +13,11 @@ namespace KMeans
             List<DataVec> points = ReadTestData();
 
             KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
-            Cluster[] clusters =  cl.Calculate();
+            Cluster[] clusters =  cl.Compute();
 
             Console.WriteLine("\n");
             Console.WriteLine("Number of clusters k = " + clusters.Length);
-            cl.PrintCentroids();
+            cl.PrintClusters();
 
             Console.ReadLine();
         }

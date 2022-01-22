@@ -85,12 +85,12 @@ namespace KMeans
             {
                 return 0;
             }
-            double[] mean = new double[Centroid.Elements.Length];
+            double[] mean = new double[Centroid.Components.Length];
             for(int i = 0; i < mean.Length; ++i)
             {
                 for(int pI = 0; pI < Points.Count; ++pI)
                 {
-                    mean[i] += Points[pI].Elements[i];
+                    mean[i] += Points[pI].Components[i];
                 }
                 mean[i] /= Points.Count;
 
