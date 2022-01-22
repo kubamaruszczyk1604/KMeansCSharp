@@ -58,11 +58,14 @@ namespace KMeans
 
         public void PrintCentroids()
         {
-            Console.WriteLine("Centroids: ");
-            for(int i = 0; i < m_Clusters.Length; ++i)
+            Console.WriteLine("Centroids" + new string(' ', 50)+ "Members");
+            for (int i = 0; i < m_Clusters.Length; ++i)
             {
-                m_Clusters[i].Centroid.Print();
-                Console.WriteLine("CNT: " + m_Clusters[i].Points.Count.ToString());
+                string ptTex = m_Clusters[i].Centroid.ToStringFormated();
+                int diff = 60 - ptTex.Length;
+                if (diff < 1) diff = 1;
+                ptTex += new string(' ', diff);
+                Console.WriteLine(ptTex + " "+ m_Clusters[i].Points.Count.ToString());
             }
         }
 
@@ -100,7 +103,7 @@ namespace KMeans
                 {
                     distChanged += m_Clusters[iCluster].RecalculateCentroid();
                 }
-                Console.WriteLine(distChanged);
+                Console.WriteLine("Convergence = " + distChanged);
                 if (distChanged < 0.01)
                     break;
             }

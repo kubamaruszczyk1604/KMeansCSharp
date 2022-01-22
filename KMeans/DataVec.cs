@@ -72,6 +72,18 @@ namespace KMeans
             }
             return str.Substring(0,str.Length-1);
         }
+
+        public string ToStringFormated()
+        {
+            string str = "";
+            const int digits = 25;
+            for (int i = 0; i < Elements.Length; ++i)
+            {
+                int ln = Elements[i].ToString().Length;
+                str += Elements[i].ToString() + new string(' ', digits - ln);
+            }
+            return str.Substring(0, str.Length - 1);
+        }
     }
 
    
