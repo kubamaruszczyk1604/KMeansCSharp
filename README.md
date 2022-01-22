@@ -20,14 +20,17 @@ GetDistance() method and provide their own distance function.
 
 Example usage:
 
-  //Data points (vectors)
-  List<DataVec> points = ReadTestData();
+    //Data points
   
-  // First argument of the constructor is a reference to data points. Second argument is k (number of clusters)
-  KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
+    List<DataVec> points = ReadTestData();
   
-  // Perform clasification and return results
-  Cluster[] clusters =  cl.Calculate();
+    // First argument of the constructor is a reference to data points. Second argument is k (number of clusters)
+  
+    KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
+  
+    // Perform clasification and return results
+  
+    Cluster[] clusters =  cl.Calculate();
   
 
 Each returned Cluster object will contain:
