@@ -10,7 +10,7 @@ If you find any part of it useful, feel free to use it however you like.
 
 
 Algorithm operates on set of n-dimensional vectors (data points). 
-These vectors are represented here by DataVec class, which in its simplest form contains:
+These vectors are represented here by DataVec class, which, in its simplest form contains:
 
   - Array of vector components
   - Method for calculating distance between data points: GetDistance(DataVec other). 
