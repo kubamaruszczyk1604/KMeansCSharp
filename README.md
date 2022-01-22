@@ -14,15 +14,12 @@ classes that are derived form DataVec can provide their own implemantations of d
 ### Example usage:
 
     //Data points
-  
     List<DataVec> points = ReadTestData();
   
     // First argument of the constructor is a reference to data points. Second argument is k (number of clusters)
-  
     KMeansClustering cl = new KMeansClustering(points.ToArray(), 15);
   
     // Perform clasification and return results
-  
     Cluster[] clusters =  cl.Calculate();
   
 
