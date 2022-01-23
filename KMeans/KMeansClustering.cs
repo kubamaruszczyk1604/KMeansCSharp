@@ -43,9 +43,9 @@ namespace KMeans
         /// <summary>
         /// Performs clustering.
         /// </summary>
-        /// <param name="minDist">Mean acceptable divergence</param>
+        /// <param name="maxDiv">Mean acceptable divergence</param>
         /// <returns>Array of clusters, each containing centroid and a list of assigned data points.</returns>
-        public Cluster[] Compute(double minDist = 0.01d)
+        public Cluster[] Compute(double maxDiv = 0.0001d)
         {
             int iterations = 0;
             while(iterations < MAX_ITERATIONS)
@@ -79,8 +79,8 @@ namespace KMeans
                 {
                     distChanged += m_Clusters[iCluster].RecalculateCentroid();
                 }
-                Console.WriteLine("Convergence = " + distChanged);
-                if (distChanged/m_Clusters.Length < minDist)
+                Console.WriteLine("Mean error = " + distChanged);
+                if (distChanged/m_Clusters.Length < maxDiv)
                     break;
             }
             return m_Clusters;
