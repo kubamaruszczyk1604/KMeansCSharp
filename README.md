@@ -31,6 +31,6 @@ Each returned Cluster object will contain:
 
 ## Disclaimer
 This code was tested with few datasets and gives results that are close to ground truth.
-It also works fine for image posterization and colour paletes extraction (although it is quite slow for larger images and hugher k's).
+It also works fine for image posterization and colour paletes extraction (although it is quite slow for larger images and higher k's).
 I cannot, however, guarantee that it is 100% bug free.
 If you find any part of it useful, feel free to use it however you like.
