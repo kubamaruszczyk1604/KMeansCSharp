@@ -30,7 +30,7 @@ Each returned Cluster object will contain:
   - List of all points that were assigned this cluster.
 
 ## Disclaimer
-This software was tested with few datasets and gives results that are close to ground truth.
-I also use it for extracting palettes from images, with satisfying results.
+This code was tested with few datasets and gives results that are close to ground truth.
+I also use it for image posterization and extracting colour paletes.
 However, I cannot guarantee it is 100% bug free.
 If you find any part of it useful, feel free to use it however you like.
